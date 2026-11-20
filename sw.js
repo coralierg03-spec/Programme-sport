@@ -1,5 +1,5 @@
 // Service worker : sert la page depuis le cache (marche hors ligne) et la met à jour en arrière-plan.
-var CACHE = "full-body-v4";
+var CACHE = "full-body-v5";
 var CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192-v2.png", "./icon-512-v2.png", "./apple-touch-icon-v2.png"];
 
 self.addEventListener("install", function (e) {
@@ -24,7 +24,7 @@ self.addEventListener("fetch", function (e) {
   e.respondWith(
     caches.open(CACHE).then(function (cache) {
       return cache.match(req, { ignoreSearch: true }).then(function (hit) {
-        var net = fetch(req).then(function (res) {
+        var net = fetch(req, sameOrigin ? { cache: "no-cache" } : undefined).then(function (res) {
           if (res && (res.ok || res.type === "opaque")) cache.put(req, res.clone());
           return res;
         }).catch(function () { return hit; });
