@@ -191,7 +191,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     <div class="chips" id="mealChips" role="group" aria-label="Moment"></div>
     <p class="count" id="mealCount"></p>
     <ul class="list" id="mealList"></ul>
-    <h3>Légumes et fibres sans légumes verts</h3>
+    <h3>Légumes et fibres</h3>
     <ul class="mini" id="veg"></ul>
     <h3>Courses de base</h3>
     <ul class="mini" id="shop"></ul>
@@ -268,15 +268,15 @@ var RULES = [
 
 var MEALS = [
   {n:"Skyr, flocons d'avoine et banane", w:"Petit-déjeuner", i:"Skyr nature, flocons d'avoine, banane, miel, un peu de cannelle", p:"~30 g", tm:"5 min"},
-  {n:"Omelette 3 œufs, pain complet", w:"Petit-déjeuner", i:"3 œufs, fromage râpé, tomates, 2 tranches de pain complet", p:"~28 g", tm:"10 min"},
+  {n:"Omelette 3 œufs, pain complet", w:"Petit-déjeuner", i:"3 œufs, fromage râpé, tomates ou épinards, 2 tranches de pain complet", p:"~28 g", tm:"10 min"},
   {n:"Pancakes avoine et banane", w:"Petit-déjeuner", i:"Banane, 2 œufs, flocons d'avoine mixés, yaourt grec, fruits rouges", p:"~25 g", tm:"15 min"},
-  {n:"Poulet, riz et poivrons rôtis", w:"Déjeuner / dîner", i:"Blanc de poulet, riz basmati, poivrons et carottes rôtis au four, huile d'olive", p:"~40 g", tm:"30 min"},
-  {n:"Saumon, patate douce, tomates", w:"Déjeuner / dîner", i:"Pavé de saumon, patate douce au four, tomates cerises, citron", p:"~35 g", tm:"30 min"},
-  {n:"Bowl bœuf, riz et maïs", w:"Déjeuner / dîner", i:"Bœuf haché 5 %, riz, maïs, poivrons, avocat, sauce yaourt", p:"~40 g", tm:"20 min"},
-  {n:"Pâtes complètes, dinde et champignons", w:"Déjeuner / dîner", i:"Pâtes complètes, dinde hachée, sauce tomate, champignons, parmesan", p:"~40 g", tm:"25 min"},
-  {n:"Wraps poulet et carottes", w:"Déjeuner / dîner", i:"Galettes de blé, poulet, fromage frais, tomate, carottes râpées", p:"~35 g", tm:"10 min"},
-  {n:"Curry de pois chiches et poulet", w:"Déjeuner / dîner", i:"Poulet, pois chiches, lait de coco léger, curry, tomates concassées, riz", p:"~35 g", tm:"30 min"},
-  {n:"Salade thon, œufs et lentilles", w:"Déjeuner / dîner", i:"Thon, 2 œufs durs, lentilles, tomates, maïs, vinaigrette citron", p:"~40 g", tm:"15 min"},
+  {n:"Poulet, riz et légumes rôtis", w:"Déjeuner / dîner", i:"Blanc de poulet, riz basmati, brocoli, poivrons et carottes rôtis au four, huile d'olive", p:"~40 g", tm:"30 min"},
+  {n:"Saumon, patate douce, haricots verts", w:"Déjeuner / dîner", i:"Pavé de saumon, patate douce au four, haricots verts, citron", p:"~35 g", tm:"30 min"},
+  {n:"Bowl bœuf, riz et maïs", w:"Déjeuner / dîner", i:"Bœuf haché 5 %, riz, maïs, poivrons, salade verte, avocat, sauce yaourt", p:"~40 g", tm:"20 min"},
+  {n:"Pâtes complètes, dinde et épinards", w:"Déjeuner / dîner", i:"Pâtes complètes, dinde hachée, sauce tomate, champignons, épinards, parmesan", p:"~40 g", tm:"25 min"},
+  {n:"Wraps poulet et carottes", w:"Déjeuner / dîner", i:"Galettes de blé, poulet, fromage frais, salade, tomate, carottes râpées", p:"~35 g", tm:"10 min"},
+  {n:"Curry de pois chiches et poulet", w:"Déjeuner / dîner", i:"Poulet, pois chiches, courgettes, lait de coco léger, curry, tomates concassées, riz", p:"~35 g", tm:"30 min"},
+  {n:"Salade thon, œufs et lentilles", w:"Déjeuner / dîner", i:"Thon, 2 œufs durs, lentilles, tomates, concombre, maïs, vinaigrette citron", p:"~40 g", tm:"15 min"},
   {n:"Fromage blanc et fruits rouges", w:"Collation", i:"Fromage blanc 0 %, fruits rouges, une poignée d'amandes", p:"~20 g", tm:"2 min"},
   {n:"Jambon blanc et fruit", w:"Collation", i:"2 tranches de jambon ou dinde, une pomme, une poignée de noix", p:"~15 g", tm:"2 min"},
   {n:"Shaker de whey et banane", w:"Autour de la séance", i:"1 dose de whey, banane, eau ou lait", p:"~25 g", tm:"2 min"},
@@ -285,6 +285,7 @@ var MEALS = [
 var MOMENTS = ["Tous","Petit-déjeuner","Déjeuner / dîner","Collation","Autour de la séance"];
 
 var VEG = [
+  "Légumes verts : brocoli, haricots verts, courgettes, épinards, salade, concombre",
   "Carottes, crues ou rôties",
   "Poivrons rouges et jaunes",
   "Tomates, cerises ou concassées",
@@ -292,7 +293,8 @@ var VEG = [
   "Patate douce, butternut, potiron",
   "Maïs, betterave cuite",
   "Lentilles, lentilles corail, pois chiches",
-  "Fruits : banane, pomme, fruits rouges, orange"
+  "Fruits : banane, pomme, fruits rouges, orange",
+  "À éviter selon tes goûts : petits pois, choux de Bruxelles"
 ];
 var SHOP = [
   "Viandes et poissons : blancs de poulet, dinde, bœuf haché 5 %, saumon, thon en boîte",
